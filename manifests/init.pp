@@ -2,12 +2,12 @@ class exim(
   $mailman_domains = [],
   $queue_interval = '30m',
   $queue_run_max = '5',
-  $queue_smtp_domains = '',
+  $queue_smtp_domains = undef,
   $smarthost = false,
   $sysadmins = []
 ) {
 
-  include exim::params
+  include ::exim::params
 
   package { $::exim::params::package:
     ensure => present,
@@ -40,13 +40,14 @@ class exim(
     }
   }
 
-  service { 'exim':
-    ensure      => running,
-    name        => $::exim::params::service_name,
-    hasrestart  => true,
-    subscribe   => [File[$::exim::params::config_file],
-                    File[$::exim::params::sysdefault_file]],
-    require     => Package[$::exim::params::package],
+  service { $::exim::params::service_name:
+    ensure     => running,
+    hasrestart => true,
+    subscribe  => [
+      File[$::exim::params::config_file],
+      File[$::exim::params::sysdefault_file],
+    ],
+    require    => Package[$::exim::params::package],
   }
 
   file { $::exim::params::config_file:
