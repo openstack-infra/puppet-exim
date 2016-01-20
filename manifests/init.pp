@@ -4,7 +4,9 @@ class exim(
   $queue_run_max = '5',
   $queue_smtp_domains = undef,
   $smarthost = false,
-  $sysadmins = []
+  $sysadmins = [],
+  $transports = [],
+  $routers = []
 ) {
 
   include ::exim::params
