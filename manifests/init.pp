@@ -1,3 +1,25 @@
+# The 'routers' and 'transports' parameters are lists of hashes of
+# hashes.  Each entry of the outer hash corresponds to a single router
+# or transport definition, with the key being the name of the router
+# or transport.  The inner hash is a set of options for that router or
+# transport which are set verbatim, except that 'flag' options (where
+# Exim expects merely the presence or absence of the option with no
+# value associated) are passed in as booleans, where a value of true
+# means the option should be present.  E.g.:
+#
+# routers => [
+#   {'storyboard' => {
+#      'driver'                     => 'redirect',
+#      'local_parts'                => 'storyboard',
+#      'local_part_suffix_optional' => true,
+#      'local_part_suffix'          => '-bounces : -bounces+*',
+#      'data'                       => ':blackhole:',
+#   }}
+# ]
+#
+# For the current Exim configuration, see:
+# http://www.exim.org/exim-html-current/doc/html/spec_html/index.html
+
 class exim(
   $mailman_domains = [],
   $queue_interval = '30m',
