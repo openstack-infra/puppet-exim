@@ -559,19 +559,6 @@ acl_check_data:
 
 begin routers
 
-<% @routers.each do |router| -%>
-<% router.each_pair do |name, values| -%>
-<%= name %>:
-<% values.each_pair do |k, v| -%>
-<% if v == true -%>
-  <%= k %>
-<% else -%>
-  <%= k %> = <%= v %>
-<% end -%>
-<% end -%>
-<% end -%>
-<% end -%>
-
 <% if @mailman_domains.length > 0 -%>
 # Pick up on messages from our local mailman and route them via our
 # special VERP-enabled transport
@@ -794,19 +781,6 @@ mailman_verp_smtp:
 # Errors-To: may carry old return_path
   headers_remove = Errors-To
   headers_add = Errors-To: ${return_path}
-<% end -%>
-
-<% @transports.each do |transport| -%>
-<% transport.each_pair do |name, values| -%>
-<%= name %>:
-<% values.each_pair do |k, v| -%>
-<% if v == true -%>
-  <%= k %>
-<% else -%>
-  <%= k %> = <%= v %>
-<% end -%>
-<% end -%>
-<% end -%>
 <% end -%>
 
 ######################################################################
