@@ -562,11 +562,16 @@ begin routers
 <% @routers.each do |router| -%>
 <% router.each_pair do |name, values| -%>
 <%= name %>:
-<% values.each_pair do |k, v| -%>
-<% if v == true -%>
+<% if values.has_key?('driver') -%>
+  driver = <%= values['driver'] %>
+<% end -%>
+<% values.keys.sort.each do |k| -%>
+<% if k != 'driver' -%>
+<% if values[k] == true -%>
   <%= k %>
 <% else -%>
-  <%= k %> = <%= v %>
+  <%= k %> = <%= values[k] %>
+<% end -%>
 <% end -%>
 <% end -%>
 <% end -%>
@@ -799,11 +804,16 @@ mailman_verp_smtp:
 <% @transports.each do |transport| -%>
 <% transport.each_pair do |name, values| -%>
 <%= name %>:
-<% values.each_pair do |k, v| -%>
-<% if v == true -%>
+<% if values.has_key?('driver') -%>
+  driver = <%= values['driver'] %>
+<% end -%>
+<% values.keys.sort.each do |k| -%>
+<% if k != 'driver' -%>
+<% if values[k] == true -%>
   <%= k %>
 <% else -%>
-  <%= k %> = <%= v %>
+  <%= k %> = <%= values[k] %>
+<% end -%>
 <% end -%>
 <% end -%>
 <% end -%>
