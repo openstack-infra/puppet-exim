@@ -561,6 +561,7 @@ begin routers
 
 <% @routers.each do |router| -%>
 <% router.each_pair do |name, values| -%>
+
 <%= name %>:
 <% if values.has_key?('driver') -%>
   driver = <%= values['driver'] %>
@@ -803,6 +804,7 @@ mailman_verp_smtp:
 
 <% @transports.each do |transport| -%>
 <% transport.each_pair do |name, values| -%>
+
 <%= name %>:
 <% if values.has_key?('driver') -%>
   driver = <%= values['driver'] %>
