@@ -21,14 +21,14 @@
 # http://www.exim.org/exim-html-current/doc/html/spec_html/index.html
 
 class exim(
-  $mailman_domains = [],
-  $queue_interval = '30m',
-  $queue_run_max = '5',
+  $mailman_domains    = [],
+  $queue_interval     = '30m',
+  $queue_run_max      = '5',
   $queue_smtp_domains = undef,
-  $smarthost = false,
-  $sysadmins = [],
-  $transports = [],
-  $routers = []
+  $routers            = [],
+  $smarthost          = false,
+  $sysadmins          = [],
+  $transports         = [],
 ) {
 
   include ::exim::params
