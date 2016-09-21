@@ -21,6 +21,7 @@
 # http://www.exim.org/exim-html-current/doc/html/spec_html/index.html
 
 class exim(
+  $local_domains      = '@',
   $mailman_domains    = [],
   $queue_interval     = '30m',
   $queue_run_max      = '5',
