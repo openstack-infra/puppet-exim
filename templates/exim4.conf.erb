@@ -349,6 +349,16 @@ MM_LISTCHK=MM_HOME/lists/${lc::$local_part}/config.pck
 
 dns_ipv4_lookup = *.gmail.com : *.google.com
 
+# Exim does not make use of environment variables itself. However,
+# libraries that Exim uses (e.g. LDAP) depend on specific environment settings.
+# There are two lists: keep_environment for the variables we trust, and
+# add_environment for variables we want to set to a specific value.
+# Note that TZ is handled separately by the timezone runtime option
+# and TIMEZONE_DEFAULT buildtime option.
+
+keep_environment =
+# add_environment = PATH=/usr/bin::/bin
+
 ######################################################################
 #                       ACL CONFIGURATION                            #
 #         Specifies access control lists for incoming SMTP mail      #
