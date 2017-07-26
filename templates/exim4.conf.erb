@@ -349,6 +349,16 @@ MM_LISTCHK=MM_HOME/lists/${lc::$local_part}/config.pck
 
 dns_ipv4_lookup = *.gmail.com : *.google.com
 
+<% if @smtp_accept_max != "" -%>
+# simultaneous incoming connections
+smtp_accept_max = <%= @smtp_accept_max %>
+<% end %>
+
+<% if @smtp_accept_max_per_host != "" -%>
+# connections from one host
+smtp_accept_max_per_host = <%= @smtp_accept_max_per_host %>
+<% end %>
+
 ######################################################################
 #                       ACL CONFIGURATION                            #
 #         Specifies access control lists for incoming SMTP mail      #
