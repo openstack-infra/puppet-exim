@@ -312,9 +312,9 @@ queue_run_max = <%= @queue_run_max %>
 # to be queued in this way, and is equivalent to setting
 # queue_smtp_domains to "*". See also hold_domains and queue_domains.
 
-<% if @queue_smtp_domains != "" -%>
+<% unless ["", nil, :undef].include?(@queue_smtp_domains) -%>
 queue_smtp_domains = <%= @queue_smtp_domains %>
-<% end %>
+<% end -%>
 
 <% if @mailman_domains.length > 0 -%>
 # Home dir for your Mailman installation -- aka Mailman's prefix
@@ -348,6 +348,16 @@ MM_LISTCHK=MM_HOME/lists/${lc::$local_part}/config.pck
 # new v6 addrs:
 
 dns_ipv4_lookup = *.gmail.com : *.google.com
+
+<% unless ["", nil, :undef].include?(@smtp_accept_max) -%>
+# simultaneous incoming connections
+smtp_accept_max = <%= @smtp_accept_max %>
+<% end -%>
+
+<% unless ["", nil, :undef].include?(@smtp_accept_max_per_host) -%>
+# connections from one host
+smtp_accept_max_per_host = <%= @smtp_accept_max_per_host %>
+<% end -%>
 
 ######################################################################
 #                       ACL CONFIGURATION                            #
