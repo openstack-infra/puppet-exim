@@ -1,0 +1,9 @@
+Code-Review+2: James E. Blair <corvus@inaugust.com>
+Code-Review+2: Ian Wienand <iwienand@redhat.com>
+Workflow+1: Ian Wienand <iwienand@redhat.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Thu, 27 Jul 2017 01:25:28 +0000
+Reviewed-on: https://review.openstack.org/487451
+Project: openstack-infra/puppet-exim
+Branch: refs/heads/master
