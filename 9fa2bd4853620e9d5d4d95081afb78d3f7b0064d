@@ -1,0 +1,10 @@
+Verified+1: Jenkins
+Code-Review+2: James E. Blair <corvus@inaugust.com>
+Code-Review+2: Clark Boylan <cboylan@sapwetik.org>
+Workflow+1: Clark Boylan <cboylan@sapwetik.org>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Mon, 20 Nov 2017 21:15:37 +0000
+Reviewed-on: https://review.openstack.org/484989
+Project: openstack-infra/puppet-exim
+Branch: refs/heads/master
