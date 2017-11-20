@@ -587,40 +587,6 @@ begin routers
 <% end -%>
 <% end -%>
 
-<% if @mailman_domains.length > 0 -%>
-# Pick up on messages from our local mailman and route them via our
-# special VERP-enabled transport
-#
-mailman_verp_router:
-driver = dnslookup
-# we only consider messages sent in through loopback
-condition = ${if or{{eq{$sender_host_address}{127.0.0.1}} \
-                    {eq{$sender_host_address}{::1}}}{yes}{no}}
-# we do not do this for traffic going to the local machine
-domains = !+local_domains:!+mm_domains
-ignore_target_hosts = <; 0.0.0.0; \
-                         64.94.110.11; \
-                         127.0.0.0/8; \
-                         ::1/128;fe80::/10;fe \
-                         c0::/10;ff00::/8
-# only the un-VERPed bounce addresses are handled
-senders = "*-bounces@*"
-transport = mailman_verp_smtp
-
-mailman_router:
-  driver            = accept
-  domains           = +mm_domains
-  require_files     = MM_LISTCHK
-  local_part_suffix_optional
-  local_part_suffix = -admin     : \
-         -bounces   : -bounces+* : \
-         -confirm   : -confirm+* : \
-         -join      : -leave     : \
-         -owner     : -request   : \
-         -subscribe : -unsubscribe
-  transport         = mailman_transport
-<% end -%>
-
 # This router routes to remote hosts over SMTP by explicit IP address,
 # when an email address is given in "domain literal" form, for example,
 # <user@[192.168.35.64]>. The RFCs require this facility. However, it is
@@ -715,6 +681,40 @@ localuser:
 # local_part_suffix_optional
   transport = local_delivery
   cannot_route_message = Unknown user
+
+<% if @mailman_domains.length > 0 -%>
+# Pick up on messages from our local mailman and route them via our
+# special VERP-enabled transport
+#
+mailman_verp_router:
+driver = dnslookup
+# we only consider messages sent in through loopback
+condition = ${if or{{eq{$sender_host_address}{127.0.0.1}} \
+                    {eq{$sender_host_address}{::1}}}{yes}{no}}
+# we do not do this for traffic going to the local machine
+domains = !+local_domains:!+mm_domains
+ignore_target_hosts = <; 0.0.0.0; \
+                         64.94.110.11; \
+                         127.0.0.0/8; \
+                         ::1/128;fe80::/10;fe \
+                         c0::/10;ff00::/8
+# only the un-VERPed bounce addresses are handled
+senders = "*-bounces@*"
+transport = mailman_verp_smtp
+
+mailman_router:
+  driver            = accept
+  domains           = +mm_domains
+  require_files     = MM_LISTCHK
+  local_part_suffix_optional
+  local_part_suffix = -admin     : \
+         -bounces   : -bounces+* : \
+         -confirm   : -confirm+* : \
+         -join      : -leave     : \
+         -owner     : -request   : \
+         -subscribe : -unsubscribe
+  transport         = mailman_transport
+<% end -%>
 
 
 ######################################################################
