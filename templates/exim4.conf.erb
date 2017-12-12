@@ -44,6 +44,11 @@ CONFDIR = <%= scope.lookupvar('exim::params::conf_dir') %>
 #                    MAIN CONFIGURATION SETTINGS                     #
 ######################################################################
 
+# This is the default value now, but we need to explicitly set it to
+# the empty string to avoid exim emitting a warning message.
+# See https://tronche.com/wiki/Exim_keep_environment
+keep_environment =
+
 # Specify your host's canonical name here. This should normally be the fully
 # qualified "official" name of your host. If this option is not set, the
 # uname() function is called to obtain the name. In many cases this does
