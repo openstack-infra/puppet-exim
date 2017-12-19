@@ -573,25 +573,6 @@ acl_check_data:
 
 begin routers
 
-<% @routers.each do |router| -%>
-<% router.each_pair do |name, values| -%>
-
-<%= name %>:
-<% if values.has_key?('driver') -%>
-  driver = <%= values['driver'] %>
-<% end -%>
-<% values.keys.sort.each do |k| -%>
-<% if k != 'driver' -%>
-<% if values[k] == true -%>
-  <%= k %>
-<% else -%>
-  <%= k %> = <%= values[k] %>
-<% end -%>
-<% end -%>
-<% end -%>
-<% end -%>
-<% end -%>
-
 # This router routes to remote hosts over SMTP by explicit IP address,
 # when an email address is given in "domain literal" form, for example,
 # <user@[192.168.35.64]>. The RFCs require this facility. However, it is
@@ -721,6 +702,24 @@ mailman_router:
   transport         = mailman_transport
 <% end -%>
 
+<% @routers.each do |router| -%>
+<% router.each_pair do |name, values| -%>
+
+<%= name %>:
+<% if values.has_key?('driver') -%>
+  driver = <%= values['driver'] %>
+<% end -%>
+<% values.keys.sort.each do |k| -%>
+<% if k != 'driver' -%>
+<% if values[k] == true -%>
+  <%= k %>
+<% else -%>
+  <%= k %> = <%= values[k] %>
+<% end -%>
+<% end -%>
+<% end -%>
+<% end -%>
+<% end -%>
 
 ######################################################################
 #                      TRANSPORTS CONFIGURATION                      #
