@@ -1,4 +1,8 @@
 # /etc/aliases
+<% @extra_aliases.each do |key,value| -%>
+<%= key %>: <%= value %><% end -%>
+<% end -%>
+
 mailer-daemon: postmaster
 postmaster: root
 nobody: root
@@ -12,8 +16,6 @@ abuse: root
 noc: root
 security: root
 
-gerrit2: root
-jenkins: root
 <% if @sysadmins.length > 0 -%>
 root: <%= @sysadmins.join(",") %>
 <% end -%>
