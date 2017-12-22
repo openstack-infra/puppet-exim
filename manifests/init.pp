@@ -32,6 +32,7 @@ class exim(
   $transports               = [],
   $smtp_accept_max          = undef,
   $smtp_accept_max_per_host = undef,
+  $extra_aliases            = {},
 ) {
 
   include ::exim::params
