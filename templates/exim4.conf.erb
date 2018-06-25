@@ -652,6 +652,7 @@ system_aliases:
 
 # .forward files are not supported --jeblair
 
+<% if @default_localuser_router == true -%>
 # This router matches local user mailboxes. If the router fails, the error
 # message is "Unknown user".
 
@@ -667,6 +668,7 @@ localuser:
 # local_part_suffix_optional
   transport = local_delivery
   cannot_route_message = Unknown user
+<% end -%>
 
 <% if @mailman_domains.length > 0 -%>
 # Pick up on messages from our local mailman and route them via our

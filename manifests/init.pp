@@ -27,6 +27,7 @@ class exim(
   $queue_run_max            = '5',
   $queue_smtp_domains       = undef,
   $routers                  = [],
+  $default_localuser_router = true,
   $smarthost                = false,
   $sysadmins                = [],
   $transports               = [],
