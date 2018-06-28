@@ -1,0 +1,11 @@
+Code-Review+1: Matthew Treinish <mtreinish@kortar.org>
+Code-Review+2: Joshua Hesketh <josh@nitrotech.org>
+Code-Review+2: Clark Boylan <cboylan@sapwetik.org>
+Code-Review+2: James E. Blair <corvus@inaugust.com>
+Workflow+1: James E. Blair <corvus@inaugust.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Thu, 28 Jun 2018 19:33:22 +0000
+Reviewed-on: https://review.openstack.org/577893
+Project: openstack-infra/puppet-exim
+Branch: refs/heads/master
