@@ -1,3 +1,3 @@
-# OpenStack Exim Module
+# This repo has moved to OpenDev
 
-This module installs and configures exim
+It can now be found at [https://opendev.org/opendev/puppet-exim](https://opendev.org/opendev/puppet-exim)
